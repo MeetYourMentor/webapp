@@ -1,0 +1,24 @@
+
+  .Home-header {
+    background-color: #042383;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(30px);
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+  }
+  
+  .Home-text {
+    text-align: center;
+  }
+
+  .regBut {
+      margin-top: 30%;
+      margin-left: 30%;
+      align-items: center;
+  }
+  

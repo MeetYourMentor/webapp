@@ -3,7 +3,8 @@ import React from 'react';
 import { InteractionType } from "@azure/msal-browser";
 import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
 import './App.css';
-import { RegisterMentor } from './components/RegisterMentor';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './components/Routes';
 
 class App extends React.Component<any, any> {
   constructor(props: any) {
@@ -12,13 +13,15 @@ class App extends React.Component<any, any> {
   render() {
     return (
       <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
-        <div className="App">
-          <nav className="App-header">
-            {/* <img src={logo} className="App-logo" alt="logo" /> */}
-            <p className="App-text">Meet your mentor</p>
-          </nav>
-          <RegisterMentor />
-        </div>
+        <Router>
+          <div className="App">
+            <nav className="App-header">
+              {/* <img src={logo} className="App-logo" alt="logo" /> */}
+              <p className="App-text">Meet your mentor</p>
+            </nav>
+            <Routes />
+          </div>
+        </Router>
       </MsalAuthenticationTemplate >
     );
     function WelcomeUser() {
