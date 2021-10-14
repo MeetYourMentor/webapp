@@ -4,7 +4,7 @@ import { InteractionType } from "@azure/msal-browser";
 import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from './components/Routes';
+import {Routes} from './components/Routes';;
 import { getMe, getMyPhoto } from './graph/api';
 import {loginRequest} from './authentication/config';
 import { Person } from '@microsoft/mgt-react';

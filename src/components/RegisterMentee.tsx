@@ -19,15 +19,15 @@ type State = {
     topSkills?: string[];
     skills?: string[];
     mentor: {
-        Name: "Dr. Bridget Davis",
-        Location: "Helenaville",
-        Role: "Marketing analyst",
-        Email: 'bdavis@microsoftgraph.com',
-        Phone: '+1 (888) 458-784'
+        Name: "Devina Sachin Dhuri",
+        Location: "Redmond",
+        Role: "Software Engineer",
+        Email: 'dedhuri@microsoftgraph.com',
+        Phone: '+1 (607) 458-784' 
     }
 };
 
-export class RegisterMentor extends React.Component<any, State> {
+export class RegisterMentee extends React.Component<any, State> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -36,16 +36,15 @@ export class RegisterMentor extends React.Component<any, State> {
             role: "",
             school: "",
             mentee: "0",
-            level: "0",
             group: "0",
             topSkills: [],
             skills: [],
             mentor: {
-                Name: "Dr. Bridget Davis",
-                Location: "Helenaville",
-                Role: "Marketing analyst",
-                Email: 'bdavis@microsoftgraph.com',
-                Phone: '+1 (888) 458-784'   
+                Name: "Devina Sachin Dhuri",
+                Location: "Redmond",
+                Role: "Software Engineer",
+                Email: 'dedhuri@microsoftgraph.com',
+                Phone: '+1 (607) 458-784'   
             }
         };
         this.onChangeDescription = this.onChangeDescription.bind(this);
@@ -90,6 +89,29 @@ export class RegisterMentor extends React.Component<any, State> {
         }
         ] as IDropdownOption[]
     }
+    private _getTopSkillsDropdownOptions = (): IDropdownOption[] => {
+        return [{
+            key: 'fe',
+            text: 'Frontend Development'
+        },
+        {
+            key: 'be',
+            text: 'Backend Development'
+        },
+        {
+            key: 'pm',
+            text: 'Project Management'
+        },
+        {
+            key: 'ux',
+            text: 'UX Design'
+        },
+        {
+            key: 'research',
+            text: 'Research'
+        }
+        ] as IDropdownOption[]
+    }
     private _getLevelDropdownOptions = (): IDropdownOption[] => {
         return [{
             key: '1',
@@ -125,29 +147,6 @@ export class RegisterMentor extends React.Component<any, State> {
         {
             key: '3',
             text: 'ERG3'
-        }
-        ] as IDropdownOption[]
-    }
-    private _getTopSkillsDropdownOptions = (): IDropdownOption[] => {
-        return [{
-            key: 'fe',
-            text: 'Frontend Development'
-        },
-        {
-            key: 'be',
-            text: 'Backend Development'
-        },
-        {
-            key: 'pm',
-            text: 'Project Management'
-        },
-        {
-            key: 'ux',
-            text: 'UX Design'
-        },
-        {
-            key: 'research',
-            text: 'Research'
         }
         ] as IDropdownOption[]
     }
@@ -238,27 +237,16 @@ export class RegisterMentor extends React.Component<any, State> {
                     presence={PersonaPresence.online}
                     size={PersonaSize.size120}
                 />
-                {/* <Stack className="personaCardButtons" horizontal tokens={{ childrenGap: 30 }} horizontalAlign="start">
-                    <Icon className="icon" iconName="Chat"/>
-                    <Icon className="icon" iconName="Org"/>
-                    <Icon className="icon" iconName="Video"/>
-                    <Icon className="icon" iconName="Phone"/>
-                </Stack> */}
             </Stack>
         );
     }
     
     public render(): React.ReactElement {
-        const { experience, role, topSkills, mentee, level } = this.state;
+        const { experience, role, topSkills, level } = this.state;
 
-        const personDetails = {
-            displayName: 'Nikola Metulev',
-            mail: 'nikola@contoso.com',
-            personImage: 'url'
-        }
         return (
             <div className="presentation">
-                <h1>Register as a mentor</h1>
+                <h1>Register as a Mentee</h1>
                 <Text>A great mentor-mentee relationship can be really important in developing your career and being a mentor can be really fulfilling and impactful.<br />
                     Let's get these people together to form amazing mentor-mentee relationships!</Text>
                 <div className="person">
@@ -272,12 +260,6 @@ export class RegisterMentor extends React.Component<any, State> {
                     presence={PersonaPresence.online}
                     size={PersonaSize.size72}
                 />
-                {/* <Stack className="personaCardButtons" horizontal tokens={{ childrenGap: 30 }} horizontalAlign="start">
-                    <Icon className="icon" iconName="Chat"/>
-                    <Icon className="icon" iconName="Org"/>
-                    <Icon className="icon" iconName="Video"/>
-                    <Icon className="icon" iconName="Phone"/>
-                </Stack> */}
             </Stack>
                 </div>
                 <div className="information">
@@ -321,29 +303,20 @@ export class RegisterMentor extends React.Component<any, State> {
                         />
                     </div>
 
-                    <h4>Mentorship information</h4>
+                    <h4>Career Level</h4>
                     <div className="information-section">
                         <Dropdown
-                            placeholder="Select upto 3 mentees"
-                            label="How many mentees do you want to mentor?"
-                            required
-                            options={this._getMenteesDropdownOptions()}
-                            onChange={this.onDropdownChangeMentees}
-                        />
-                    </div>
-                    <div className="information-section">
-                        <Dropdown className="secondBox"
-                            placeholder="Select career level do you want to mentor?"
-                            label="Which career level do you want to mentor?"
+                            placeholder="Select your career level"
+                            label="Select your career level"
                             required
                             options={this._getLevelDropdownOptions()}
                             onChange={this.onDropdownChangeLevels}
                         />
                     </div>
                     <div className="information-section">
-                        <Dropdown className="thirdBox"
-                            placeholder="Select Employee Resource Groups"
-                            label="Select Employee Resource Groups"
+                        <Dropdown className="secondBox"
+                            placeholder="Select your EmployeeResourceGroups"
+                            label="Select you EmployeeResourceGroups"
                             options={this._getGroupDropdownOptions()}
                             onChange={this.onDropdownChangeGroup}
                         />
@@ -371,7 +344,7 @@ export class RegisterMentor extends React.Component<any, State> {
                             this._availabilityItems.map((c, index) => {
                                 return (
                                     <Stack horizontal tokens={{ childrenGap: 10, padding: 10 }} key={index}>
-                                        <Dropdown
+                                        <Dropdown 
                                             className="schedule" 
                                             required
                                             placeholder="Select a slot"
@@ -386,13 +359,7 @@ export class RegisterMentor extends React.Component<any, State> {
                         }
                         </div>
                     <br/>
-                   
-                    {role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0 && experience && parseInt(experience) > 0 && level && level.length > 0 && (
-                        <PrimaryButton type="button" onClick={() => history.push('/ViewProfile')}>Register</PrimaryButton>
-                    )}
-                    {!(role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0 && experience && parseInt(experience) > 0 && level && level.length > 0) && (
-                        <PrimaryButton type="button" disabled>Register</PrimaryButton>
-                    )}
+                    <PrimaryButton type="button" onClick={() => history.push('/SearchMentor')}>Search Your Mentor</PrimaryButton>
                     <PrimaryButton onClick={() => history.push('/')} className="button" type="button">Cancel</PrimaryButton>
                 </div>
             </div >

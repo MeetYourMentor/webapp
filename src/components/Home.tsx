@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PrimaryButton } from '@fluentui/react';
+import { DocumentCard, DocumentCardActivity, DocumentCardDetails, DocumentCardPreview, DocumentCardTitle, DocumentCardType, PrimaryButton } from '@fluentui/react';
 import history from './history';
 import "./Home.css";
 
@@ -21,7 +21,10 @@ export class Home extends React.Component<any, any> {
                         <div>{text4}</div>
                     </div>
                 </div>
-                <PrimaryButton className="regBut" onClick={() => history.push('/Register')}>Click button to register as Mentor</PrimaryButton>
+                <div className="Home-cards">
+                    <PrimaryButton className="regBut" onClick={() => history.push('/Register')}>Click button to register as Mentor</PrimaryButton>
+                    <PrimaryButton className="regBut" onClick={() => history.push('/RegisterMentee')}>Click button to register as Mentee</PrimaryButton>
+                </div>
             </div>
         );
     }
