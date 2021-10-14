@@ -30,6 +30,7 @@ body {
   font-size: calc(25px);
   color: rgb(255, 255, 255);
   position: fixed;
+  z-index: 500;
   top: 0;
 }
 

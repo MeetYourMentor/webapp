@@ -2,6 +2,8 @@ import * as React from 'react';
 import './Mentor.css';
 import { Dropdown, IDropdownOption, PrimaryButton, Text, TextField } from '@fluentui/react';
 import { Person } from '@microsoft/mgt-react';
+import history from './history';
+
 // import RoomIcon from '@material-ui/icons/Room';
 
 var arr: string[] = [];
@@ -215,12 +217,12 @@ export class RegisterMentor extends React.Component<any, State> {
 
 
                     {role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0 && (
-                        <PrimaryButton type="button">Register</PrimaryButton>
+                        <PrimaryButton type="button" onClick={() => history.push('/Profile')}>Register</PrimaryButton>
                     )}
                     {!(role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0) && (
                         <PrimaryButton type="button" disabled>Register</PrimaryButton>
                     )}
-                    <PrimaryButton className="button" type="button">Cancel</PrimaryButton>
+                    <PrimaryButton onClick={() => history.push('/')} className="button" type="button">Cancel</PrimaryButton>
                 </div>
             </div >
         );
