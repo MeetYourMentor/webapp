@@ -8,7 +8,7 @@ import history from './history';
 import { MentorViewProfile } from "./MentorViewProfile";
 import { SearchMentor } from "./SearchMentor/SearchMentor";
 
-export default class Routes extends Component {
+export class Routes extends Component {
     render() {
         return (
             <Router history={history}>

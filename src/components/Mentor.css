@@ -12,9 +12,8 @@
 }
 
 .description {
-  margin-left: 100px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  max-width: '100px';
+  height: 400px;
 }
 
 .information {
@@ -45,8 +44,17 @@
  height: 32px; 
 }
 
-.persona
-{
-  width: 100%;
-  font-size: 30px;
+.persona {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.personaCard {
+  padding-left: 15px;
+  padding-top: 25px;
+}
+
+.personaCardButtons {
+  padding-left: 25px;
+  padding-top: 60px;
 }

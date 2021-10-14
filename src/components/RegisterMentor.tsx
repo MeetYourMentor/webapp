@@ -210,21 +210,27 @@ export class RegisterMentor extends React.Component<any, State> {
                 <Text>A great mentor-mentee relationship can be really important in developing your career and being a mentor can be really fulfilling and impactful.<br />
                     Let's get these people together to form amazing mentor-mentee relationships!</Text>
                 <div className="person">
-                <div className="persona">
-                    <HoverCard expandingCardProps={{onRenderCompactCard: this.onRenderCard, renderData: this.state.mentor, expandedCardHeight: 0}}>
-                        <Persona 
-                            className="persona"
-                            text={this.state.mentor.Name}
-                            secondaryText={this.state.mentor.Role}
-                            tertiaryText={this.state.mentor.Location}
-                            optionalText={this.state.mentor.Email}
-                            />
-                    </HoverCard>
-                </div>
+                <Stack verticalAlign="stretch">
+                <Persona 
+                    className="personaCard"
+                    text={this.state.mentor.Name}
+                    secondaryText={this.state.mentor.Role}
+                    tertiaryText={this.state.mentor.Location}
+                    optionalText={this.state.mentor.Email}
+                    presence={PersonaPresence.online}
+                    size={PersonaSize.size72}
+                />
+                {/* <Stack className="personaCardButtons" horizontal tokens={{ childrenGap: 30 }} horizontalAlign="start">
+                    <Icon className="icon" iconName="Chat"/>
+                    <Icon className="icon" iconName="Org"/>
+                    <Icon className="icon" iconName="Video"/>
+                    <Icon className="icon" iconName="Phone"/>
+                </Stack> */}
+            </Stack>
                 </div>
                 <div className="information">
                     <div className="information-section">
-                        <TextField label="Tell us about yourself" onChange={this.onChangeDescription} />
+                        <TextField multiline rows={3} label="Tell us about yourself" onChange={this.onChangeDescription} />
                     </div>
 
                     <h4>Experience</h4>
