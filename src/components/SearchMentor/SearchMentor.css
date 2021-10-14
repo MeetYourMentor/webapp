@@ -1,0 +1,76 @@
+.body {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 50%;
+}
+
+.search {
+    margin-left: 30%;
+}
+
+.checkbox {
+    display: flex;
+    text-align: right;
+    padding-left: 20%;
+    font-size: xx-small !important;
+}
+
+.searchResults {
+    padding-left: 10%;
+}
+
+.searchResultsLengthText {
+    display: flex;
+    text-align: left;
+}
+
+.groupedList {
+    color: black;
+    font-size: xx-small;
+}
+
+.mentor {
+    padding-top: 30px;
+}
+
+.icon {
+    color: black;
+}
+.mentorInfo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 5%;
+    justify-items: space-between;
+}
+
+.persona {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.personaCard {
+    padding-left: 15px;
+    padding-top: 25px;
+}
+
+.personaCardButtons {
+    padding-left: 25px;
+    padding-top: 60px;
+}
+
+.mentorName {
+    font-size: small;
+    width: fit-content;
+}
+
+.mentorRole {
+    font-size: xx-small;
+    width: fit-content;
+}
+
+.mentorButtons {
+    display: flex;
+    flex-direction: row;
+}
