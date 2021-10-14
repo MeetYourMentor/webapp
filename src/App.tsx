@@ -6,14 +6,23 @@ import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './components/Routes';
 
+function WelcomeUser() {
+  const { accounts } = useMsal();
+  console.log('accounts ', accounts)
+  const username = accounts[0].name;
+
+  return <p>Welcome, {username}</p>
+}
+
 class App extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
+ 
+
   render() {
     return (
       <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
         <Router>
+          <p>This will only render if a user is signed-in.</p>
+          <WelcomeUser />
           <div className="App">
             <nav className="App-header">
               {/* <img src={logo} className="App-logo" alt="logo" /> */}
@@ -24,13 +33,6 @@ class App extends React.Component<any, any> {
         </Router>
       </MsalAuthenticationTemplate >
     );
-    function WelcomeUser() {
-      const { accounts } = useMsal();
-      console.log('accounts ', accounts)
-      const username = accounts[0].name;
-
-      return <p>Welcome, {username}</p>
-    }
   }
 }
 
