@@ -60,6 +60,11 @@
     padding-top: 60px;
 }
 
+.profile {
+    margin-left: 50%;
+    margin-bottom: 2.5%;
+}
+
 .mentorName {
     font-size: small;
     width: fit-content;

@@ -1,13 +1,13 @@
 
 const MentorData = [
     {
-        Name: "Charlene Jast", Location: "Port Iliana", Role: "Senior analyst"
+        Name: "Lavanya Kasarabada", Location: "Port Iliana", Role: "SENIOR PROGRAM MANAGER"
     },
     {
-        Name: "Lynda Wehner", Location: "New Alenafurt", Role: "Security associate"
+        Name: "Yogesh Sharma", Location: "New Alenafurt", Role: "SENIOR PROGRAM MANAGER"
     },
     {
-        Name: "Lorraine Simonis", Location: "West Aliceton", Role: "Security engineer"
+        Name: "David Nunez Tejerina", Location: "West Aliceton", Role: "PRINCIPAL PM MANAGER"
     },
     {
         Name: "Dr. Bridget Davis", Location: "Helenaville", Role: "Marketing analyst"
@@ -17,22 +17,43 @@ const MentorData = [
 
 const ConnectionSessionData = [
     {
-        Name: "Mentee Name 1", Date: "2020-11-20", Time: "9:00 am"
+        Name: "Arijit Mondal", Date: "2020-11-20", Time: "9:00 am"
     },
     {
-        Name: "Mentee Name 2", Date: "2020-11-20", Time: "9:00 am"
+        Name: "Zach DeBardlebon", Date: "2020-08-20", Time: "9:00 am"
     },
     {
-        Name: "Mentee Name 1", Date: "2021-11-11", Time: "2:00 pm"
+        Name: "Jason Cole", Date: "2020-04-20", Time: "9:00 am"
+    },
+    {
+        Name: "Michael Cai", Date: "2021-11-15", Time: "9:00 am"
+    },
+    {
+        Name: "Anchal Aggarwal", Date: "2021-11-11", Time: "2:00 pm"
+    },
+    {
+        Name: "Devina Sachin Dhuri", Date: "2021-09-11", Time: "2:00 pm"
+    },
+    {
+        Name: "Sarah Battle", Date: "2021-11-11", Time: "2:00 pm"
+    },
+    {
+        Name: "Vishnu Sankar", Date: "2021-12-11", Time: "2:00 pm"
     }
 ];
 
 const MenteeProgressData = [
     {
-        Name: "Mentee Name 1", MeetingsCompleted: "1"
+        Name: "Devina Sachin Dhuri", MeetingsCompleted: "3"
     },
     {
-        Name: "Mentee Name 2", MeetingsCompleted: "2"
+        Name: "Zach DeBardlebon", MeetingsCompleted: "1"
+    },
+    {
+        Name: "Jason Cole", MeetingsCompleted: "3"
+    },
+    {
+        Name: "Arijit Mondal", MeetingsCompleted: "2"
     }
 ];
 

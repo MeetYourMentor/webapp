@@ -14,6 +14,8 @@ type State = {
     role?: string;
     school?: string;
     mentee?: string;
+    level?: string;
+    group?: string;
     topSkills?: string[];
     skills?: string[];
     mentor: {
@@ -34,6 +36,8 @@ export class RegisterMentor extends React.Component<any, State> {
             role: "",
             school: "",
             mentee: "0",
+            level: "0",
+            group: "0",
             topSkills: [],
             skills: [],
             mentor: {
@@ -83,6 +87,44 @@ export class RegisterMentor extends React.Component<any, State> {
         {
             key: '3',
             text: '3'
+        }
+        ] as IDropdownOption[]
+    }
+    private _getLevelDropdownOptions = (): IDropdownOption[] => {
+        return [{
+            key: '1',
+            text: 'IC1'
+        },
+        {
+            key: '2',
+            text: 'IC2'
+        },
+        {
+            key: '3',
+            text: 'IC3'
+        },
+        {
+            key: '4',
+            text: 'IC4'
+        },
+        {
+            key: '5',
+            text: 'IC5'
+        }
+        ] as IDropdownOption[]
+    }
+    private _getGroupDropdownOptions = (): IDropdownOption[] => {
+        return [{
+            key: '1',
+            text: 'ERG1'
+        },
+        {
+            key: '2',
+            text: 'ERG2'
+        },
+        {
+            key: '3',
+            text: 'ERG3'
         }
         ] as IDropdownOption[]
     }
@@ -160,6 +202,16 @@ export class RegisterMentor extends React.Component<any, State> {
             this.setState({ mentee: item.key as string });
         }
     }
+    public onDropdownChangeLevels = (_event: React.FormEvent<HTMLDivElement>, item?: IDropdownOption): void => {
+        if (item && this.state.level) {
+            this.setState({ level: item.key as string });
+        }
+    }
+    public onDropdownChangeGroup = (_event: React.FormEvent<HTMLDivElement>, item?: IDropdownOption): void => {
+        if (item && this.state.group) {
+            this.setState({ group: item.key as string });
+        }
+    }
 
     onChangeDescription = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
         this.setState({ description: newValue });
@@ -184,20 +236,20 @@ export class RegisterMentor extends React.Component<any, State> {
                     tertiaryText={item.Location}
                     optionalText={item.Email}
                     presence={PersonaPresence.online}
-                    size={PersonaSize.size72}
+                    size={PersonaSize.size120}
                 />
-                <Stack className="personaCardButtons" horizontal tokens={{ childrenGap: 30 }} horizontalAlign="start">
+                {/* <Stack className="personaCardButtons" horizontal tokens={{ childrenGap: 30 }} horizontalAlign="start">
                     <Icon className="icon" iconName="Chat"/>
                     <Icon className="icon" iconName="Org"/>
                     <Icon className="icon" iconName="Video"/>
                     <Icon className="icon" iconName="Phone"/>
-                </Stack>
+                </Stack> */}
             </Stack>
         );
     }
     
     public render(): React.ReactElement {
-        const { experience, role, topSkills, mentee } = this.state;
+        const { experience, role, topSkills, mentee, level } = this.state;
 
         const personDetails = {
             displayName: 'Nikola Metulev',
@@ -249,9 +301,9 @@ export class RegisterMentor extends React.Component<any, State> {
                     <h4>Skills</h4>
                     <div className="information-section">
                         <Dropdown
-                            placeholder="Select upto 3 skills"
+                            placeholder="Select upto 3 SUPER skills"
                             defaultSelectedKeys={this.state.topSkills}
-                            label="What are your top primary skills?"
+                            label="What are your SUPER skills?"
                             multiSelect
                             required
                             options={this._getTopSkillsDropdownOptions()}
@@ -279,6 +331,23 @@ export class RegisterMentor extends React.Component<any, State> {
                             onChange={this.onDropdownChangeMentees}
                         />
                     </div>
+                    <div className="information-section">
+                        <Dropdown className="secondBox"
+                            placeholder="Select career level do you want to mentor?"
+                            label="Which career level do you want to mentor?"
+                            required
+                            options={this._getLevelDropdownOptions()}
+                            onChange={this.onDropdownChangeLevels}
+                        />
+                    </div>
+                    <div className="information-section">
+                        <Dropdown className="thirdBox"
+                            placeholder="Select Employee Resource Groups"
+                            label="Select Employee Resource Groups"
+                            options={this._getGroupDropdownOptions()}
+                            onChange={this.onDropdownChangeGroup}
+                        />
+                    </div>
 
                     <h4>Availability</h4>
                     {/* <div className="information-section">
@@ -302,9 +371,15 @@ export class RegisterMentor extends React.Component<any, State> {
                             this._availabilityItems.map((c, index) => {
                                 return (
                                     <Stack horizontal tokens={{ childrenGap: 10, padding: 10 }} key={index}>
-                                        <Dropdown  placeholder="Select a slot" multiSelect options={c.Slots.map((v, i) => {
-                                            return { key: i, text: v }
-                                        })} />
+                                        <Dropdown
+                                            className="schedule" 
+                                            required
+                                            placeholder="Select a slot"
+                                            multiSelect
+                                            options={c.Slots.map((v, i) => {
+                                                return { key: i, text: v }
+                                            })} 
+                                        />
                                     </Stack>
                                 )
                             })
@@ -312,10 +387,10 @@ export class RegisterMentor extends React.Component<any, State> {
                         </div>
                     <br/>
                    
-                    {role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0 && (
+                    {role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0 && experience && parseInt(experience) > 0 && level && level.length > 0 && (
                         <PrimaryButton type="button" onClick={() => history.push('/ViewProfile')}>Register</PrimaryButton>
                     )}
-                    {!(role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0) && (
+                    {!(role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0 && experience && parseInt(experience) > 0 && level && level.length > 0) && (
                         <PrimaryButton type="button" disabled>Register</PrimaryButton>
                     )}
                     <PrimaryButton onClick={() => history.push('/')} className="button" type="button">Cancel</PrimaryButton>
