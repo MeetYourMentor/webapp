@@ -1,16 +1,16 @@
-import { IIconStyles } from "@fluentui/react";
+// import { IIconStyles } from "@fluentui/react";
 
-export const detailListStyle = () => {
+// export const detailListStyle = () => {
 
-}
+// }
 
-export const iconStyles: IIconStyles = {
-    root: {
-        fontSize: '24px',
-        height: '24px',
-        width: '24px',
-    },
-};
+// export const iconStyles: IIconStyles = {
+//     root: {
+//         fontSize: '24px',
+//         height: '24px',
+//         width: '24px',
+//     },
+// };
 
 export const documentCardStyles = {
     root: {        

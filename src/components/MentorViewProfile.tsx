@@ -7,6 +7,7 @@ import {
 import { MockMentorService } from '../services/MockMentorService';
 import * as ViewProfileStyles from '../componentStyles/MentorViewProfileStyles';
 import { FilterPreviousSessionData, FilterUpcomingSessionData } from '../common/Utility';
+import { PersonCard } from '@microsoft/mgt-react';
 
 export const MentorViewProfile = () => {
 
@@ -49,8 +50,11 @@ export const MentorViewProfile = () => {
 
     return (
         <Stack tokens={verticalGapStackTokens}>
-            <span>Item One</span>
-            <Stack horizontal horizontalAlign="start">
+            <>
+            
+                <PersonCard showPresence userId="00ab6906-abfe-407c-9f6d-2c8615750e30"></PersonCard>
+            </>
+            <Stack horizontal horizontalAlign="space-evenly">
                 <Stack>
                     <p className="App-text">Upcoming sessions</p>
                     {sessionItems && sessionItems.upcoming.length > 0 &&
