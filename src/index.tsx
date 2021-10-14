@@ -7,6 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import msalInstance from './authentication/authStore'
 import { MsalProvider } from '@azure/msal-react';
+import { initializeIcons } from "@fluentui/font-icons-mdl2";
 
 const Root = ()=>{
   return(
@@ -18,6 +19,8 @@ const Root = ()=>{
   )
 }
 
+//Initialize fluent ui react icons
+initializeIcons(undefined, { disableWarnings: true });
 
 ReactDOM.render( <Root/>, document.getElementById('root'));
 
