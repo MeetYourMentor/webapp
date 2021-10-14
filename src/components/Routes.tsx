@@ -13,7 +13,8 @@ export default class Routes extends Component {
             <Router history={history}>
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/Register" component={RegisterMentor} />
+                    <Route path="/RegisterMentor" component={RegisterMentor} />
+                    <Route path="/RegisterMentee" component={RegisterMentor} />
                     <Route path="/Profile" component={MentorProfile} />
                     <Route path="/ViewProfile" component={MentorViewProfile} />
                 </Switch>

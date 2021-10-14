@@ -2,12 +2,13 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import {
     DetailsList, DocumentCard, DocumentCardDetails, DocumentCardLocation,
-    DocumentCardPreview, DocumentCardTitle, DocumentCardType, IStackTokens, Separator, Stack
+    DocumentCardPreview, DocumentCardTitle, DocumentCardType, IStackTokens, PrimaryButton, Separator, Stack
 } from '@fluentui/react';
 import { MockMentorService } from '../services/MockMentorService';
 import * as ViewProfileStyles from '../componentStyles/MentorViewProfileStyles';
 import { FilterPreviousSessionData, FilterUpcomingSessionData } from '../common/Utility';
 import { PersonCard } from '@microsoft/mgt-react';
+import history from './history';
 
 export const MentorViewProfile = () => {
 
@@ -53,6 +54,7 @@ export const MentorViewProfile = () => {
             <>
             
                 <PersonCard showPresence userId="00ab6906-abfe-407c-9f6d-2c8615750e30"></PersonCard>
+                <PrimaryButton type="button" onClick={() => history.push('/Register')}>View Profile</PrimaryButton>
             </>
             <Stack horizontal horizontalAlign="space-evenly">
                 <Stack>

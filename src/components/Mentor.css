@@ -36,3 +36,17 @@
   margin-left: 20px;
   width: 250px;
 }
+
+.calendar {
+ display: inline-block; 
+}
+
+.week {
+ height: 32px; 
+}
+
+.persona
+{
+  width: 100%;
+  font-size: 30px;
+}

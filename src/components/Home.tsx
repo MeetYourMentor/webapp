@@ -11,7 +11,8 @@ export class Home extends React.Component<any, any> {
                     {/* <img src={logo} className="App-logo" alt="logo" /> */}
                     <p className="Home-text">Meet your mentor</p>
                 </nav>
-                <PrimaryButton className="regBut" onClick={() => history.push('/Register')}>Click button to register as Mentor</PrimaryButton>
+                <PrimaryButton className="regBut" onClick={() => history.push('/RegisterMentor')}>Click button to register as Mentor</PrimaryButton>
+                <PrimaryButton className="regBut" onClick={() => history.push('/RegisterMentee')}>Click button to register as Mentee</PrimaryButton>
             </div>
         );
     }

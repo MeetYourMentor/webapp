@@ -1,8 +1,9 @@
 import * as React from 'react';
 import './Mentor.css';
 import { Dropdown, IDropdownOption, PrimaryButton, Text, TextField } from '@fluentui/react';
+import { Person } from '@microsoft/mgt-react';
 import history from './history';
-import { Checkbox, HoverCard, Icon, Persona, PersonaPresence, PersonaSize, Stack } from 'office-ui-fabric-react';
+import { HoverCard, Icon, Persona, PersonaPresence, PersonaSize, Stack } from 'office-ui-fabric-react';
 
 // import RoomIcon from '@material-ui/icons/Room';
 
@@ -19,13 +20,11 @@ type State = {
     mentor: {
         Name: "Dr. Bridget Davis",
         Location: "Helenaville",
-        Role: "Marketing analyst",
-        Email: 'bdavis@microsoftgraph.com',
-        Phone: '+1 (888) 458-784'
+        Role: "Marketing analyst"
     }
 };
 
-export class RegisterMentor extends React.Component<any, State> {
+export class RegisterMentee extends React.Component<any, State> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -39,10 +38,7 @@ export class RegisterMentor extends React.Component<any, State> {
             mentor: {
                 Name: "Dr. Bridget Davis",
                 Location: "Helenaville",
-                Role: "Marketing analyst",
-                Email: 'bdavis@microsoftgraph.com',
-                Phone: '+1 (888) 458-784'   
-            }
+                Role: "Marketing analyst"}
         };
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeRole = this.onChangeRole.bind(this);
@@ -51,26 +47,6 @@ export class RegisterMentor extends React.Component<any, State> {
     }
 
 
-    private _availabilityItems = [
-        {
-            Day: 'Monday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Tuesday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Wednesday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Thursday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Friday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Saturday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        }
-    ];
     private _getMenteesDropdownOptions = (): IDropdownOption[] => {
         return [{
             key: '1',
@@ -182,7 +158,6 @@ export class RegisterMentor extends React.Component<any, State> {
                     text={item.Name}
                     secondaryText={item.Role}
                     tertiaryText={item.Location}
-                    optionalText={item.Email}
                     presence={PersonaPresence.online}
                     size={PersonaSize.size72}
                 />
@@ -210,17 +185,15 @@ export class RegisterMentor extends React.Component<any, State> {
                 <Text>A great mentor-mentee relationship can be really important in developing your career and being a mentor can be really fulfilling and impactful.<br />
                     Let's get these people together to form amazing mentor-mentee relationships!</Text>
                 <div className="person">
-                <div className="persona">
-                    <HoverCard expandingCardProps={{onRenderCompactCard: this.onRenderCard, renderData: this.state.mentor, expandedCardHeight: 0}}>
-                        <Persona 
-                            className="persona"
-                            text={this.state.mentor.Name}
-                            secondaryText={this.state.mentor.Role}
-                            tertiaryText={this.state.mentor.Location}
-                            optionalText={this.state.mentor.Email}
-                            />
-                    </HoverCard>
-                </div>
+                <HoverCard expandingCardProps={{onRenderCompactCard: this.onRenderCard, renderData: this.state.mentor, expandedCardHeight: 0}}>
+                    <Persona 
+                        className="persona"
+                        text={this.state.mentor.Name}
+                        secondaryText={this.state.mentor.Role}
+                        tertiaryText={this.state.mentor.Location}
+                        optionalText={this.state.mentor.Location}
+                    />
+                </HoverCard>
                 </div>
                 <div className="information">
                     <div className="information-section">
@@ -280,31 +253,7 @@ export class RegisterMentor extends React.Component<any, State> {
                         <Text> Reset </Text>
                     </div> */}
                     <h5>Select which days you would like to mentor</h5>
-                    <div className="calendar">
-                        {this._availabilityItems && this._availabilityItems.length > 0 &&
-                            this._availabilityItems.map((c, index) => {
-                                return (
-                                    <Stack horizontal tokens={{ childrenGap: 10, padding: 10 }} key={index}>
-                                        <div className="calendar week"><Checkbox label={c.Day} /> </div>
-                                    </Stack>
-                                )
-                            })
-                        }
-                                    </div>
-                        <div className="calendar">
-                        {this._availabilityItems && this._availabilityItems.length > 0 &&
-                            this._availabilityItems.map((c, index) => {
-                                return (
-                                    <Stack horizontal tokens={{ childrenGap: 10, padding: 10 }} key={index}>
-                                        <Dropdown  placeholder="Select a slot" multiSelect options={c.Slots.map((v, i) => {
-                                            return { key: i, text: v }
-                                        })} />
-                                    </Stack>
-                                )
-                            })
-                        }
-                        </div>
-                    <br/>
+
                    
                     {role && role.length > 0 && topSkills && topSkills.length > 4 && mentee && parseInt(mentee) > 0 && (
                         <PrimaryButton type="button" onClick={() => history.push('/ViewProfile')}>Register</PrimaryButton>
