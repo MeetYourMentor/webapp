@@ -7,12 +7,14 @@ import {
     Persona,
     PersonaPresence,
     PersonaSize,
-    Stack
+    Stack,
+    Text
 } from "office-ui-fabric-react";
 import './SearchMentor.css'
 import { useBoolean } from '@fluentui/react-hooks';
 import { ScheduleModal } from "../Modals/ScheduleModal";
 import { SuccessModal } from "../Modals/SuccessModal";
+import history from '../history';
 
 export const Mentor = (props: any) => {
     const { mentor } = props;
@@ -67,6 +69,9 @@ export const Mentor = (props: any) => {
                     tertiaryText={mentor.Location}
                     optionalText={mentor.Location}
                 />
+                <div className="personaProfile" onClick={() => history.push('/MentorProfile')}>
+                    View Profile
+                </div>
             </HoverCard>
             <Stack className="mentorButtons" tokens={{ childrenGap: 10 }} horizontal horizontalAlign="end" verticalAlign="center">
                 <DefaultButton onClick={showScheduleModal} text="Schedule"/>

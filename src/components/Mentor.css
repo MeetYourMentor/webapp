@@ -5,6 +5,12 @@
   position: 'relative';
 }
 
+.presentationMentee {
+  display: 'block';
+  margin-top: 20px;
+  position: 'relative';
+}
+
 .person {
   margin-left: 100px;
   margin-top: 50px;
@@ -12,9 +18,8 @@
 }
 
 .description {
-  margin-left: 100px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  max-width: '100px';
+  height: 400px;
 }
 
 .information {
@@ -35,4 +40,70 @@
 .secondBox {
   margin-left: 20px;
   width: 250px;
+}
+
+.thirdBox {
+  margin-left: 50px;
+  width: 250px;
+}
+
+.calendar {
+ display: inline-block; 
+}
+
+.week {
+ height: 32px; 
+}
+
+.persona {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.personaCard {
+  padding-left: 15px;
+  padding-top: 25px;
+}
+
+.personaCardButtons {
+  padding-left: 25px;
+  padding-top: 60px;
+}
+
+.profile {
+  margin-left: 10%;
+  margin-bottom: 2.5%;
+}
+
+.profileMentee {
+  margin-left: 20px;
+  margin-top: 2.5%;
+}
+
+.credits {
+  margin-left: 10%;
+}
+
+.schedule {
+  width: 250px;
+}
+
+.leftSection {
+  width: 40%;
+  margin-left: 10%;
+  display: inline-block;
+}
+
+.rightSection {
+  width: 40%;
+  display: inline-block;
+  vertical-align:top
+}
+
+.personaMentee {
+  background-color: #aaafbe;
+}
+
+.personaProfile {
+  color: rgb(0, 16, 235);
 }

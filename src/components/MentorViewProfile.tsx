@@ -1,13 +1,14 @@
-import * as React from 'react';
 import { useEffect, useState } from 'react';
 import {
     DetailsList, DocumentCard, DocumentCardDetails, DocumentCardLocation,
-    DocumentCardPreview, DocumentCardTitle, DocumentCardType, IStackTokens, Separator, Stack
+    DocumentCardPreview, DocumentCardTitle, DocumentCardType, IStackTokens, PrimaryButton, Separator, Stack
 } from '@fluentui/react';
 import { MockMentorService } from '../services/MockMentorService';
 import * as ViewProfileStyles from '../componentStyles/MentorViewProfileStyles';
 import { FilterPreviousSessionData, FilterUpcomingSessionData } from '../common/Utility';
-import { PersonCard } from '@microsoft/mgt-react';
+import history from './history';
+import { Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
+import './Mentor.css';
 
 export const MentorViewProfile = () => {
 
@@ -32,6 +33,13 @@ export const MentorViewProfile = () => {
         });
     }, []);
 
+    const mentor = {
+        Name: "Dr. Bridget Davis",
+        Location: "Helenaville",
+        Email: 'bdavis@microsoftgraph.com',
+        Role: "Marketing analyst"
+    }
+
     const verticalGapStackTokens: IStackTokens = {
         childrenGap: 10,
         padding: 10,
@@ -50,10 +58,18 @@ export const MentorViewProfile = () => {
 
     return (
         <Stack tokens={verticalGapStackTokens}>
-            <>
-            
-                <PersonCard showPresence userId="00ab6906-abfe-407c-9f6d-2c8615750e30"></PersonCard>
-            </>
+            <div>
+                <Persona 
+                    className="personaCard"
+                    text={mentor.Name}
+                    secondaryText={mentor.Role}
+                    tertiaryText={mentor.Location}
+                    optionalText={mentor.Email}
+                    presence={PersonaPresence.online}
+                    size={PersonaSize.size120}
+                />
+                <PrimaryButton className="profile" type="button" onClick={() => history.push('/RegisterMentor')}>View Profile</PrimaryButton>
+            </div>
             <Stack horizontal horizontalAlign="space-evenly">
                 <Stack>
                     <p className="App-text">Upcoming sessions</p>
@@ -78,27 +94,32 @@ export const MentorViewProfile = () => {
                 </Stack>
             </Stack>
             <Stack>
-                <p className="App-text">0 Credits</p>
+                <p className="App-text">2 Credits</p><br/>
                 <Stack horizontal horizontalAlign="start">
                     {mentoringProgressItems && mentoringProgressItems.length > 0 &&
-                        mentoringProgressItems.map((c, index) => {
+                        mentoringProgressItems.sort((a, b) => a.itemM > b.itemM ? 1 : -1).map((c, index) => {
                             return (
-                                <DocumentCard key={index}
-                                    aria-label="Show mentorship progress"
-                                    type={DocumentCardType.compact}
-                                    styles={ViewProfileStyles.documentCardStyles}
-                                >
-                                    <DocumentCardPreview previewImages={[previewImage]} />
-                                    <DocumentCardDetails>
-                                        <DocumentCardLocation
-                                            location={c.MeetingsCompleted + "/3 meetings completed"}
-                                            locationHref="http://microsoft.com"
-                                            ariaLabel="Credit eligibilty progress"
-                                        />
-                                        <DocumentCardTitle title={c.Name} shouldTruncate />
-                                        <DocumentCardTitle showAsSecondaryTitle title="Complete 3 meetings to claim credit" shouldTruncate />
-                                    </DocumentCardDetails>
-                                </DocumentCard>
+                                <>
+                                    <DocumentCard 
+                                        key={index}
+                                        aria-label="Show mentorship progress"
+                                        type={DocumentCardType.compact}
+                                        styles={ViewProfileStyles.documentCardStyles}
+                                    >
+                                        <DocumentCardPreview previewImages={[previewImage]} />
+                                        <DocumentCardDetails>
+                                            <DocumentCardLocation
+                                                location={c.MeetingsCompleted + "/3 meetings completed"}
+                                                locationHref="http://microsoft.com"
+                                                ariaLabel="Credit eligibilty progress"
+                                            />
+                                            <DocumentCardTitle title={c.Name} shouldTruncate />
+                                            <DocumentCardTitle showAsSecondaryTitle title="Complete 3 meetings to claim credit" shouldTruncate />
+                                        </DocumentCardDetails>
+                                    </DocumentCard>
+                                    <div className="credits">
+                                    </div>
+                                </>
                             )
                         })
                     }
