@@ -38,7 +38,7 @@ export const SearchMentor = () => {
                     presence={PersonaPresence.online}
                     size={PersonaSize.size120}
                 />
-                <PrimaryButton className="profile" type="button" onClick={() => history.push('/RegisterMentee')}>View Profile</PrimaryButton>
+                <PrimaryButton className="profile" type="button" onClick={() => history.push('/MenteeProfile')}>View Profile</PrimaryButton>
             </div>
             <Stack className="search">
                 <SearchBox placeholder="Search a mentor" />
