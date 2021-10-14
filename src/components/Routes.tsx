@@ -7,6 +7,7 @@ import { RegisterMentor } from "./RegisterMentor";
 import { MentorViewProfile } from "./MentorViewProfile";
 import { SearchMentor } from "./SearchMentor/SearchMentor";
 import { RegisterMentee } from "./RegisterMentee";
+import { MenteeProfile } from "./MenteeProfile";
 
 export class Routes extends Component {
     render() {
@@ -18,6 +19,7 @@ export class Routes extends Component {
                     <Route path="/RegisterMentee" component={RegisterMentee} />
                     <Route path="/ViewProfile" component={MentorViewProfile} />
                     <Route path="/SearchMentor" component={SearchMentor} />
+                    <Route path="/MenteeProfile" component={MenteeProfile} />
                 </Switch>
             </Router>
         )

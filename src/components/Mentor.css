@@ -5,6 +5,12 @@
   position: 'relative';
 }
 
+.presentationMentee {
+  display: 'block';
+  margin-top: 20px;
+  position: 'relative';
+}
+
 .person {
   margin-left: 100px;
   margin-top: 50px;
@@ -69,10 +75,31 @@
   margin-bottom: 2.5%;
 }
 
+.profileMentee {
+  margin-left: 20px;
+  margin-top: 2.5%;
+}
+
 .credits {
   margin-left: 10%;
 }
 
 .schedule {
   width: 250px;
+}
+
+.leftSection {
+  width: 40%;
+  margin-left: 10%;
+  display: inline-block;
+}
+
+.rightSection {
+  width: 40%;
+  display: inline-block;
+  vertical-align:top
+}
+
+.persona {
+  background-color: #aaafbe;
 }
