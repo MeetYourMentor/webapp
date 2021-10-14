@@ -1,18 +1,19 @@
 
 const MentorData = [
     {
-        name: "Charlene Jast", location: "Port Iliana", role: "Senior analyst"
+        Name: "Charlene Jast", Location: "Port Iliana", Role: "Senior analyst"
     },
     {
-        name: "Lynda Wehner", location: "New Alenafurt", role: "Security associate"
+        Name: "Lynda Wehner", Location: "New Alenafurt", Role: "Security associate"
     },
     {
-        name: "Lorraine Simonis", location: "West Aliceton", role: "Security engineer: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ultricies mi. Sed aliquet odio et magna maximus, et aliquam ipsum faucibus. Sed pulvinar vel nibh eget scelerisque. Vestibulum ornare id felis ut feugiat. Ut vulputate ante non odio condimentum, eget dignissim erat tincidunt. Etiam sodales lobortis viverra. Sed gravida nisi at nisi ornare, non maximus nisi elementum."
+        Name: "Lorraine Simonis", Location: "West Aliceton", Role: "Security engineer"
     },
     {
-        name: "Dr. Bridget Davis", location: "Helenaville", role: "Marketing analyst"
+        Name: "Dr. Bridget Davis", Location: "Helenaville", Role: "Marketing analyst"
     }
 ];
+
 
 const ConnectionSessionData = [
     {
@@ -35,6 +36,65 @@ const MenteeProgressData = [
     }
 ];
 
+
+export const SearchOptions = [
+    {
+        title: "Discipline",
+        items: [
+            "Frontend development",
+            "Backend development",
+            "Project management",
+            "UX design",
+            "UX research"
+        ]
+    },
+    {
+        title: "Other skills",
+        items: [
+            "Other skill 1",
+            "Other skill 2"
+        ]
+    },
+    {
+        title: "Location",
+        items: [
+            "Redmond",
+            "San Francisco",
+            "Atlanta"
+        ]
+    },
+    {
+        title: "Employee resource group",
+        items: [
+            "ERG 1",
+            "ERG 2"
+        ]
+    }
+];
+
+export const Groups = [
+    {title: "Discipline", offset: 0, size: 5},
+    {title: "Other skills", offset: 4, size: 2},
+    {title: "Location", offset: 5, size: 3},
+    {title: "Employee Resource group", offset: 7, size: 2}
+]
+
+export const Options = [
+    "Frontend development",
+    "Backend development",
+    "Project management",
+    "UX design",
+    "UX research",
+    "Other skill 1",
+    "Other skill 2",
+    "Redmond",
+    "San Francisco",
+    "Atlanta",
+    "ERG 1",
+    "ERG 2"
+];
+
+
 export class MockMentorService {
     getMentorMockData = (): Promise<any[]> => {
         return Promise.resolve(MentorData);
@@ -46,5 +106,17 @@ export class MockMentorService {
 
     getMenteeProgressData = (): Promise<any[]> => {
         return Promise.resolve(MenteeProgressData);
+    }
+    
+    getSearchOptionsMockData = (): Promise<any[]> => {
+        return Promise.resolve(SearchOptions);
+    }
+
+    getGroupMockData = (): Promise<any[]> => {
+        return Promise.resolve(Groups);
+    }
+
+    getOptionsMockData = (): Promise<any[]> => {
+        return Promise.resolve(Options);
     }
 }
