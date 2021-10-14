@@ -25,7 +25,7 @@ export const SearchMentor = () => {
             </Stack>
             <Stack className="searchResults">
                 <Text className="searchResultsLengthText">Showing {mentorItems.length} mentors</Text>
-                <MentorList />
+                <MentorList mentorItems={mentorItems}/>
             </Stack>
         </div>
     );
