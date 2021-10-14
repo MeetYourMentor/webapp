@@ -36,6 +36,11 @@
   width: 250px;
 }
 
+.thirdBox {
+  margin-left: 50px;
+  width: 250px;
+}
+
 .calendar {
  display: inline-block; 
 }
@@ -57,4 +62,17 @@
 .personaCardButtons {
   padding-left: 25px;
   padding-top: 60px;
+}
+
+.profile {
+  margin-left: 10%;
+  margin-bottom: 2.5%;
+}
+
+.credits {
+  margin-left: 10%;
+}
+
+.schedule {
+  width: 250px;
 }
