@@ -41,8 +41,8 @@ export const Mentor = (props: any) => {
                     tertiaryText={mentor.Location}
                     optionalText={mentor.Location}
                 />
-                <div onClick={() => history.push('/MenteeProfile')}>
-                    <Text>View Profile</Text>
+                <div className="personaProfile" onClick={() => history.push('/MentorProfile')}>
+                    View Profile
                 </div>
             </HoverCard>
             <Stack className="mentorButtons" tokens={{ childrenGap: 10 }} horizontal horizontalAlign="end" verticalAlign="center">
