@@ -1,0 +1,38 @@
+.presentation {
+  margin-left: 20px;
+  display: 'block';
+  margin-top: 70px;
+  position: 'relative';
+}
+
+.person {
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.description {
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.information {
+  margin-left: 250px;
+}
+
+.information-section {
+  display: inline-block;
+  width: 250px;
+}
+
+.button {
+  position: 'fixed';
+  margin-left: 10px;
+  text-align: "center";
+}
+
+.secondBox {
+  margin-left: 20px;
+  width: 250px;
+}

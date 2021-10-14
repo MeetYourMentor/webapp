@@ -1,7 +1,10 @@
+// import logo from './logo.svg';
+import React from 'react';
 import { InteractionType } from "@azure/msal-browser";
 import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
 import './App.css';
 import { MentorViewProfile } from "./components/MentorViewProfile";
+// import { RegisterMentor } from './components/RegisterMentor';
 
 function WelcomeUser() {
   const { accounts } = useMsal();
@@ -22,6 +25,7 @@ function App() {
           <p>
             Meet your mentor
           </p>
+          {/* <RegisterMentor /> */}
           <MentorViewProfile />
         </header>
       </div>

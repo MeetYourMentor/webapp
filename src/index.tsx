@@ -1,17 +1,21 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {msalInstance} from './authentication/authStore'
+import msalInstance from './authentication/authStore'
 import { MsalProvider } from '@azure/msal-react';
 
 const Root = ()=>{
-  return   <React.StrictMode>
-  <MsalProvider instance={msalInstance}>
-    <App />
-  </MsalProvider>
-</React.StrictMode>
+  return(
+      <Router>
+        <MsalProvider instance={msalInstance}>
+          <App />
+        </MsalProvider>
+    </Router>
+  )
 }
 
 
