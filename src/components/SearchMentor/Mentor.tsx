@@ -3,8 +3,9 @@ import {
     HoverCard,
     Icon,
     Persona,
-    PersonaPresence, PersonaSize, Stack } from "office-ui-fabric-react";
+    PersonaPresence, PersonaSize, Stack, Text } from "office-ui-fabric-react";
 import './SearchMentor.css'
+import history from '../history';
 
 export const Mentor = (props: any) => {
     const { mentor } = props;
@@ -40,6 +41,9 @@ export const Mentor = (props: any) => {
                     tertiaryText={mentor.Location}
                     optionalText={mentor.Location}
                 />
+                <div onClick={() => history.push('/MenteeProfile')}>
+                    <Text>View Profile</Text>
+                </div>
             </HoverCard>
             <Stack className="mentorButtons" tokens={{ childrenGap: 10 }} horizontal horizontalAlign="end" verticalAlign="center">
                 <DefaultButton text="Schedule"/>

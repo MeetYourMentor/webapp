@@ -29,7 +29,7 @@ export class MenteeProfile extends React.Component<any, State> {
     public render(): React.ReactElement {
         return (
             <div className="presentationMentee">
-                <div className="persona">
+                <div className="personaMentee">
                     <Persona 
                         className="personaCard"
                         text={this.state.mentor.Name}
