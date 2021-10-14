@@ -6,7 +6,7 @@ import { SearchMentor } from './components/SearchMentor';
 function WelcomeUser() {
     const { accounts } = useMsal();
     console.log('accounts ', accounts)
-    const username = accounts[0].username;
+    const username = accounts[0].name;
 
     return <p>Welcome, {username}</p>
 }
@@ -14,9 +14,8 @@ function WelcomeUser() {
 function App() {
     return (
         <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
-            <p>This will only render if a user is signed-in.</p>
-            <WelcomeUser />
             <div className="App">
+              <WelcomeUser />
               <header className="App-header">
                 {/* <img src={logo} className="App-logo" alt="logo" /> */}
                 <p>
