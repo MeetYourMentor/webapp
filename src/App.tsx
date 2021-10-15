@@ -1,13 +1,14 @@
-// import logo from './logo.svg';
+import { getMe, getMyPhoto } from './graph/api';
 import React, { useEffect, useState, useCallback } from 'react';
+import { loginRequest } from './authentication/config';
+import { Person } from '@microsoft/mgt-react';
 import { InteractionType } from "@azure/msal-browser";
 import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import {Routes} from './components/Routes';;
-import { getMe, getMyPhoto } from './graph/api';
-import {loginRequest} from './authentication/config';
-import { Person } from '@microsoft/mgt-react';
+import { Routes } from './components/Routes';;
+
+
 
 function WelcomeUser() {
   const { accounts } = useMsal();
@@ -17,9 +18,9 @@ function WelcomeUser() {
   return <p>Welcome, {username}</p>
 }
 
-interface ProfileData  {
+interface ProfileData {
   data: {} | null,
-  photo: {}| null
+  photo: {} | null
 }
 
 const personDetails = {
@@ -28,24 +29,24 @@ const personDetails = {
   personImage: 'https://i.picsum.photos/id/191/100/100.jpg?hmac=pemmPV2vXzPN8h_ona4f7TI67NwAvroAWZqA2ZwyPD4'
 }
 
-const App= (): React.FunctionComponentElement<any> => {
+const App = (): React.FunctionComponentElement<any> => {
   const [profile, getProfile] = useState<ProfileData>({
-    data: {}, photo:{}
+    data: {}, photo: {}
   });
-  
+
   const { instance, accounts } = useMsal();
 
-  const getProfileData = useCallback(async () => { 
+  const getProfileData = useCallback(async () => {
     console.log('accounts ', accounts)
-    if(accounts.length>0){
+    if (accounts.length > 0) {
       const response = await instance.acquireTokenSilent({
-              ...loginRequest,
-              account: accounts[0]
+        ...loginRequest,
+        account: accounts[0]
       });
-      const graphData: ProfileData = {data:{},photo:{}};
+      const graphData: ProfileData = { data: {}, photo: {} };
       console.log('token', response.accessToken)
 
-      if(response.accessToken){
+      if (response.accessToken) {
         graphData.data = await getMe(response.accessToken)
         graphData.photo = await getMyPhoto(response.accessToken)
       }
@@ -54,23 +55,21 @@ const App= (): React.FunctionComponentElement<any> => {
     }
   }, [accounts])
 
-  useEffect(()=>{
+  useEffect(() => {
     getProfileData()
-  },[])
+  }, [])
 
   return (
-   <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
+    <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
       <Router>
         <div className="App">
-            <nav className="App-header">
-              <div className="App-header-content">
-                <p className="App-text">Meet your mentor</p>
-                <div className="App-persona">
-                  <Person personDetails={personDetails}/>
-                </div> 
-              </div>
-            </nav>
-            <Routes />
+          <nav className="App-header">
+            <p className="App-text">Meet your mentor</p>
+            <div className="App-persona">
+              <Person personDetails={personDetails} />
+            </div>
+          </nav>
+          <Routes />
         </div>
       </Router>
     </MsalAuthenticationTemplate >
