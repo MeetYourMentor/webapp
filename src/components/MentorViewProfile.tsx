@@ -68,7 +68,7 @@ export const MentorViewProfile = () => {
                     presence={PersonaPresence.online}
                     size={PersonaSize.size120}
                 />
-                <PrimaryButton className="profile" type="button" onClick={() => history.push('/RegisterMentor')}>Manage Profile</PrimaryButton>
+                <PrimaryButton className="viewProfile" type="button" onClick={() => history.push('/RegisterMentor')}>Manage Profile</PrimaryButton>
             </div>
             <Stack horizontal horizontalAlign="space-evenly">
                 <Stack>
