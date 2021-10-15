@@ -60,7 +60,7 @@ const App = (): React.FunctionComponentElement<any> => {
   }, [])
 
   return (
-    <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
+    // <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
       <Router>
         <div className="App">
           <nav className="App-header">
@@ -72,7 +72,7 @@ const App = (): React.FunctionComponentElement<any> => {
           <Routes />
         </div>
       </Router>
-    </MsalAuthenticationTemplate >
+    // </MsalAuthenticationTemplate >
   );
 }
 
