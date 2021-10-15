@@ -2,7 +2,10 @@ import * as React from 'react';
 import './Mentor.css';
 import history from './history';
 import { Persona, PersonaPresence, PersonaSize, Text } from 'office-ui-fabric-react';
-import { PrimaryButton } from '@fluentui/react';
+import { IDropdownOption, PrimaryButton, TimeConstants } from '@fluentui/react';
+import { ScheduleModal } from './Modals/ScheduleModal';
+import { SuccessModal } from './Modals/SuccessModal';
+import { createFalse } from 'typescript';
 
 type State = {
     mentor: {
@@ -10,8 +13,12 @@ type State = {
         Location: "Redmond",
         Email: 'lkasara@microsoftgraph.com',
         Role: "Senior Program Manager"
-    }
+    },
+    showScheduleModal: boolean,
+    isScheduleModalOpen: boolean,
+    isSuccessModalOpen: boolean
 };
+
 
 export class MentorProfile extends React.Component<any, State> {
     constructor(props: any) {
@@ -22,8 +29,26 @@ export class MentorProfile extends React.Component<any, State> {
                 Location: "Redmond",
                 Email: 'lkasara@microsoftgraph.com',
                 Role: "Senior Program Manager"   
-            }
+            },
+            showScheduleModal: false,
+            isScheduleModalOpen: false,
+            isSuccessModalOpen: false
         };
+    }
+
+    private _getGroupDropdownOptions = (): IDropdownOption[] => {
+      return [{ text: "9:00 AM", key: TimeConstants.HoursInOneDay},
+        { text: "10:00 AM", key: TimeConstants.HoursInOneDay},
+        { text: "10:30 AM", key: TimeConstants.HoursInOneDay},
+        { text: "1:00 PM", key: TimeConstants.HoursInOneDay},
+        { text: "1:30 PM", key: TimeConstants.HoursInOneDay},
+        { text: "3:00 PM", key: TimeConstants.HoursInOneDay},
+        { text: "5:00 PM", key: TimeConstants.HoursInOneDay}
+      ] as IDropdownOption[]
+    }
+    
+    public showSchedule = (): void => {
+      this.setState({ showScheduleModal: true, isScheduleModalOpen: true });
     }
     
     public render(): React.ReactElement {
@@ -39,7 +64,14 @@ export class MentorProfile extends React.Component<any, State> {
                         presence={PersonaPresence.online}
                         size={PersonaSize.size120}
                     />
-                    <PrimaryButton className="profileMentee" type="button" onClick={() => history.push('/SearchMentor')}>Schedule</PrimaryButton>
+                    <PrimaryButton className="profileMentee" type="button" onClick={this.showSchedule}>Schedule</PrimaryButton>
+                    <ScheduleModal
+                        isScheduleModalOpen={this.state.isScheduleModalOpen}
+                        hideScheduleModal={true}
+                        hideScheduleModalShowSuccessModal={false}
+                        times={this._getGroupDropdownOptions()}
+                        mentor={this.state.mentor}
+                    />
                 </div>
                 <div className="leftSection">
                     <h3>Experience</h3>

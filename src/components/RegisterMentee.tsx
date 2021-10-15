@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Mentor.css';
 import { Dropdown, IDropdownOption, PrimaryButton, Text, TextField } from '@fluentui/react';
 import history from './history';
-import { Checkbox, HoverCard, Icon, Persona, PersonaPresence, PersonaSize, Stack } from 'office-ui-fabric-react';
+import { Persona, PersonaPresence, PersonaSize, Stack } from 'office-ui-fabric-react';
 
 // import RoomIcon from '@material-ui/icons/Room';
 
@@ -10,10 +10,10 @@ var arr: string[] = [];
 
 type State = {
     description?: string;
+    language?: string;
     experience?: string;
     role?: string;
     school?: string;
-    mentee?: string;
     level?: string;
     group?: string;
     topSkills?: string[];
@@ -32,10 +32,10 @@ export class RegisterMentee extends React.Component<any, State> {
         super(props);
         this.state = {
             description: "",
+            language: "",
             experience: "1",
             role: "",
             school: "",
-            mentee: "0",
             group: "0",
             topSkills: [],
             skills: [],
@@ -51,44 +51,9 @@ export class RegisterMentee extends React.Component<any, State> {
         this.onChangeRole = this.onChangeRole.bind(this);
         this.onChangeSchool = this.onChangeSchool.bind(this);
         this.onChangeExperience = this.onChangeExperience.bind(this);
+        this.onChangeLanguage = this.onChangeLanguage.bind(this);
     }
 
-
-    private _availabilityItems = [
-        {
-            Day: 'Monday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Tuesday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Wednesday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Thursday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Friday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        },
-        {
-            Day: 'Saturday', Slots: ['8 AM - 9 AM', '9 AM - 10 AM', '10 AM - 11 AM', '11 AM - 12 PM']
-        }
-    ];
-    private _getMenteesDropdownOptions = (): IDropdownOption[] => {
-        return [{
-            key: '1',
-            text: '1'
-        },
-        {
-            key: '2',
-            text: '2'
-        },
-        {
-            key: '3',
-            text: '3'
-        }
-        ] as IDropdownOption[]
-    }
     private _getTopSkillsDropdownOptions = (): IDropdownOption[] => {
         return [{
             key: 'fe',
@@ -196,11 +161,6 @@ export class RegisterMentee extends React.Component<any, State> {
             }
             this.setState({ skills: arr });
     }
-    public onDropdownChangeMentees = (_event: React.FormEvent<HTMLDivElement>, item?: IDropdownOption): void => {
-        if (item && this.state.mentee) {
-            this.setState({ mentee: item.key as string });
-        }
-    }
     public onDropdownChangeLevels = (_event: React.FormEvent<HTMLDivElement>, item?: IDropdownOption): void => {
         if (item && this.state.level) {
             this.setState({ level: item.key as string });
@@ -223,6 +183,9 @@ export class RegisterMentee extends React.Component<any, State> {
     };
     onChangeExperience = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
         this.setState({ experience: newValue });
+    };
+    onChangeLanguage = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
+        this.setState({ language: newValue });
     };
 
     onRenderCard = (item: any): JSX.Element => {
@@ -267,6 +230,11 @@ export class RegisterMentee extends React.Component<any, State> {
                         <TextField multiline rows={3} label="Tell us about yourself" onChange={this.onChangeDescription} />
                     </div>
 
+                    <h4>Basic Information</h4>
+                    <div className="information-section">
+                        <TextField label="Preferred language" required onChange={this.onChangeLanguage} />
+                    </div>
+
                     <h4>Experience</h4>
                     <div className="information-section">
                         <TextField label="Number of years of experience" required onChange={this.onChangeExperience} />
@@ -283,9 +251,9 @@ export class RegisterMentee extends React.Component<any, State> {
                     <h4>Skills</h4>
                     <div className="information-section">
                         <Dropdown
-                            placeholder="Select upto 3 SUPER skills"
+                            placeholder="Select upto 3 SUPERPOWERs"
                             defaultSelectedKeys={this.state.topSkills}
-                            label="What are your SUPER skills?"
+                            label="What are your SUPERPOWERs?"
                             multiSelect
                             required
                             options={this._getTopSkillsDropdownOptions()}
@@ -322,43 +290,7 @@ export class RegisterMentee extends React.Component<any, State> {
                         />
                     </div>
 
-                    <h4>Availability</h4>
-                    {/* <div className="information-section">
-                        <RoomIcon />
-                        <Text> Reset </Text>
-                    </div> */}
-                    <h5>Select which days you would like to mentor</h5>
-                    <div className="calendar">
-                        {this._availabilityItems && this._availabilityItems.length > 0 &&
-                            this._availabilityItems.map((c, index) => {
-                                return (
-                                    <Stack horizontal tokens={{ childrenGap: 10, padding: 10 }} key={index}>
-                                        <div className="calendar week"><Checkbox label={c.Day} /> </div>
-                                    </Stack>
-                                )
-                            })
-                        }
-                                    </div>
-                        <div className="calendar">
-                        {this._availabilityItems && this._availabilityItems.length > 0 &&
-                            this._availabilityItems.map((c, index) => {
-                                return (
-                                    <Stack horizontal tokens={{ childrenGap: 10, padding: 10 }} key={index}>
-                                        <Dropdown 
-                                            className="schedule" 
-                                            required
-                                            placeholder="Select a slot"
-                                            multiSelect
-                                            options={c.Slots.map((v, i) => {
-                                                return { key: i, text: v }
-                                            })} 
-                                        />
-                                    </Stack>
-                                )
-                            })
-                        }
-                        </div>
-                    <br/>
+                    <br/><br/>
                     <PrimaryButton type="button" onClick={() => history.push('/SearchMentor')}>Search Your Mentor</PrimaryButton>
                     <PrimaryButton onClick={() => history.push('/')} className="button" type="button">Cancel</PrimaryButton>
                 </div>
