@@ -4,11 +4,11 @@ import {
     HoverCard,
     Icon,
     IDropdownOption,
+    Link,
     Persona,
     PersonaPresence,
     PersonaSize,
-    Stack,
-    Text
+    Stack
 } from "office-ui-fabric-react";
 import './SearchMentor.css'
 import { useBoolean } from '@fluentui/react-hooks';
@@ -61,18 +61,20 @@ export const Mentor = (props: any) => {
 
     return (
         <Stack horizontal horizontalAlign="space-between">
-            <HoverCard expandingCardProps={{onRenderCompactCard: onRenderCard, renderData: mentor, expandedCardHeight: 0}}>
-                <Persona 
-                    className="persona"
-                    text={mentor.Name}
-                    secondaryText={mentor.Role}
-                    tertiaryText={mentor.Location}
-                    optionalText={mentor.Location}
-                />
+            <Stack>
+                <HoverCard expandingCardProps={{onRenderCompactCard: onRenderCard, renderData: mentor, expandedCardHeight: 0}}>
+                    <Persona 
+                        className="persona"
+                        text={mentor.Name}
+                        secondaryText={mentor.Role}
+                        tertiaryText={mentor.Location}
+                        optionalText={mentor.Location}
+                    />
+                </HoverCard>
                 <div className="personaProfile" onClick={() => history.push('/MentorProfile')}>
-                    View Profile
+                    <Link>Profile</Link>
                 </div>
-            </HoverCard>
+            </Stack>
             <Stack className="mentorButtons" tokens={{ childrenGap: 10 }} horizontal horizontalAlign="end" verticalAlign="center">
                 <DefaultButton onClick={showScheduleModal} text="Schedule"/>
                 <ScheduleModal

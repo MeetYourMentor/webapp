@@ -9,8 +9,6 @@ export const ScheduleModal = (props: any) => {
         mentor
     } = props;
 
-    console.log("mentor", mentor);
-
     return (
         <Modal isOpen={isScheduleModalOpen} onDismiss={hideScheduleModal} isBlocking>
             <Stack className="scheduleModal" verticalAlign="stretch" horizontalAlign="center">
