@@ -5,10 +5,12 @@ import { MockMentorService } from "../../services/MockMentorService";
 import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
 import { useConst } from '@fluentui/react-hooks';
 
-export const SearchOptions = () => {
+export const SearchOptions = (props: any) => {
     const [searchOptions, setSearchOptions] = useState<any[]>([]);
     const [groupsData, setGroupsData] = useState<any[]>([]);
     const [options, setOptions] = useState<any[]>([]);
+
+    const { filter } = props;
 
     // Load mock data from mock data service
     useEffect(() => {
@@ -26,7 +28,7 @@ export const SearchOptions = () => {
 
     const selection = useConst(() => {
         const s = new Selection();
-        s.setItems(searchOptions, true);
+        s.setItems(options, true);
         return s;
     });
 
@@ -47,9 +49,10 @@ export const SearchOptions = () => {
         itemIndex?: number,
         group?: IGroup,
     ): React.ReactNode => {
-        return <Checkbox className="checkbox" label={item} />
+        return <Checkbox className="checkbox" label={item} onChange={(ev?: React.FormEvent<HTMLElement | HTMLInputElement>, isChecked?: boolean) => {
+            filter(item, isChecked)
+        }} />
     };
-
 
     return (
         <SelectionZone selection={selection} selectionMode={SelectionMode.none}>
