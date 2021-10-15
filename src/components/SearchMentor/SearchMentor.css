@@ -79,3 +79,61 @@
     display: flex;
     flex-direction: row;
 }
+
+.mentorScheduleHeader {
+    margin: 20px;
+    font-weight: bold;
+}
+
+.scheduleButtons {
+    margin: 15px;
+    margin-left: 20px;
+}
+
+.datePicker {
+    min-width: 200px;
+}
+
+.timePicker {
+    min-width: 150px;
+}
+
+.scheduleModal {
+    border-top: 30px solid blue;
+    max-width: 400px;
+}
+
+.successModal {
+    border-top: 20px solid blue;
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 350px;
+}
+
+.sucessImage {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.successModalContent {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 30px;
+}
+
+.sessionText {
+    font-weight: bold;
+}
+
+.successModalText {
+    font-weight: bold;
+    padding-top: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+}
+
+.successModalCloseButton {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}

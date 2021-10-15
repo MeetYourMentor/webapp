@@ -116,15 +116,39 @@ export class RegisterMentor extends React.Component<any, State> {
     private _getGroupDropdownOptions = (): IDropdownOption[] => {
         return [{
             key: '1',
-            text: 'ERG1'
+            text: 'Asians'
         },
         {
             key: '2',
-            text: 'ERG2'
+            text: 'BAM'
         },
         {
             key: '3',
-            text: 'ERG3'
+            text: 'Disability'
+        },
+        {
+            key: '4',
+            text: 'Families'
+        },
+        {
+            key: '5',
+            text: 'GLEAM'
+        },
+        {
+            key: '6',
+            text: 'HOLA'
+        },
+        {
+            key: '6',
+            text: 'Indigenous'
+        },
+        {
+            key: '6',
+            text: 'Military'
+        },
+        {
+            key: '6',
+            text: 'Women'
         }
         ] as IDropdownOption[]
     }
@@ -213,6 +237,7 @@ export class RegisterMentor extends React.Component<any, State> {
         }
     }
 
+    
     onChangeDescription = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
         this.setState({ description: newValue });
     };
@@ -301,9 +326,9 @@ export class RegisterMentor extends React.Component<any, State> {
                     <h4>Skills</h4>
                     <div className="information-section">
                         <Dropdown
-                            placeholder="Select upto 3 SUPER skills"
+                            placeholder="Select upto 3 SUPERPOWERs"
                             defaultSelectedKeys={this.state.topSkills}
-                            label="What are your SUPER skills?"
+                            label="What are your SUPERPOWERs?"
                             multiSelect
                             required
                             options={this._getTopSkillsDropdownOptions()}
@@ -344,6 +369,7 @@ export class RegisterMentor extends React.Component<any, State> {
                         <Dropdown className="thirdBox"
                             placeholder="Select Employee Resource Groups"
                             label="Select Employee Resource Groups"
+                            required
                             options={this._getGroupDropdownOptions()}
                             onChange={this.onDropdownChangeGroup}
                         />

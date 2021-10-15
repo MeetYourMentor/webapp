@@ -1,10 +1,19 @@
+import { TimeConstants } from "@fluentui/react";
 import {
     DefaultButton,
     HoverCard,
     Icon,
+    IDropdownOption,
+    Link,
     Persona,
-    PersonaPresence, PersonaSize, Stack, Text } from "office-ui-fabric-react";
+    PersonaPresence,
+    PersonaSize,
+    Stack
+} from "office-ui-fabric-react";
 import './SearchMentor.css'
+import { useBoolean } from '@fluentui/react-hooks';
+import { ScheduleModal } from "../Modals/ScheduleModal";
+import { SuccessModal } from "../Modals/SuccessModal";
 import history from '../history';
 
 export const Mentor = (props: any) => {
@@ -31,22 +40,55 @@ export const Mentor = (props: any) => {
         );
     };
 
+    const [isScheduleModalOpen, { setTrue: showScheduleModal, setFalse: hideScheduleModal }] = useBoolean(false);
+    const [isSuccessModalOpen, { setTrue: showSuccessModal, setFalse: hideSuccessModal }] = useBoolean(false);
+    
+    // This is hacky, will fix later
+    const hideScheduleModalShowSuccessModal = () => {
+        hideScheduleModal();
+        showSuccessModal();
+    }
+
+    const times: IDropdownOption[] = [
+        { text: "9:00 AM", key: TimeConstants.HoursInOneDay},
+        { text: "10:00 AM", key: TimeConstants.HoursInOneDay},
+        { text: "10:30 AM", key: TimeConstants.HoursInOneDay},
+        { text: "1:00 PM", key: TimeConstants.HoursInOneDay},
+        { text: "1:30 PM", key: TimeConstants.HoursInOneDay},
+        { text: "3:00 PM", key: TimeConstants.HoursInOneDay},
+        { text: "5:00 PM", key: TimeConstants.HoursInOneDay}
+    ]
+
     return (
         <Stack horizontal horizontalAlign="space-between">
-            <HoverCard expandingCardProps={{onRenderCompactCard: onRenderCard, renderData: mentor, expandedCardHeight: 0}}>
-                <Persona 
-                    className="persona"
-                    text={mentor.Name}
-                    secondaryText={mentor.Role}
-                    tertiaryText={mentor.Location}
-                    optionalText={mentor.Location}
-                />
-                <div onClick={() => history.push('/MenteeProfile')}>
-                    <Text>View Profile</Text>
+            <Stack>
+                <HoverCard expandingCardProps={{onRenderCompactCard: onRenderCard, renderData: mentor, expandedCardHeight: 0}}>
+                    <Persona 
+                        className="persona"
+                        text={mentor.Name}
+                        secondaryText={mentor.Role}
+                        tertiaryText={mentor.Location}
+                        optionalText={mentor.Location}
+                    />
+                </HoverCard>
+                <div className="personaProfile" onClick={() => history.push('/MentorProfile')}>
+                    <Link>Profile</Link>
                 </div>
-            </HoverCard>
+            </Stack>
             <Stack className="mentorButtons" tokens={{ childrenGap: 10 }} horizontal horizontalAlign="end" verticalAlign="center">
-                <DefaultButton text="Schedule"/>
+                <DefaultButton onClick={showScheduleModal} text="Schedule"/>
+                <ScheduleModal
+                    isScheduleModalOpen={isScheduleModalOpen}
+                    hideScheduleModal={hideScheduleModal}
+                    hideScheduleModalShowSuccessModal={hideScheduleModalShowSuccessModal}
+                    times={times}
+                    mentor={mentor}
+                />
+                <SuccessModal
+                    isSuccessModalOpen={isSuccessModalOpen}
+                    hideSuccessModal={hideSuccessModal}
+                    mentor={mentor}
+                />
                 <DefaultButton text="Email"/>
             </Stack>
         </Stack>
