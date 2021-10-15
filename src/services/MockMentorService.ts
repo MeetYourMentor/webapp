@@ -87,8 +87,15 @@ export const SearchOptions = [
     {
         title: "Employee resource group",
         items: [
-            "ERG 1",
-            "ERG 2"
+            "Asians",
+            "BAM",
+            "Disability",
+            "Families",
+            "GLEAM",
+            "HOLA",
+            "Indigenous",
+            "Military",
+            "Women"
         ]
     }
 ];
