@@ -9,7 +9,7 @@ export const msalConfig: Configuration = {
     auth: {
         clientId: "74dfde91-aacc-412c-9c7a-c717014be33d",
         authority: "https://login.microsoftonline.com/common",
-        redirectUri:  "http://localhost:3000/callback"
+        redirectUri:  "https://meetmentor.azurewebsites.net/.auth/login/aad/callback" //http://localhost:3000/callback"
     },
     cache: {
         cacheLocation: "sessionStorage",
