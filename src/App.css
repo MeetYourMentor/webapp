@@ -26,6 +26,13 @@ body {
   flex-grow: 1
 }
 
+.App-text-dark {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #666666;
+  flex-grow: 1
+}
+
 .App-persona {
   margin-right: 10px;
   flex-grow: auto;

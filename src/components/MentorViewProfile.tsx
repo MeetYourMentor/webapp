@@ -72,19 +72,19 @@ export const MentorViewProfile = () => {
             </div>
             <Stack horizontal horizontalAlign="space-evenly">
                 <Stack>
-                    <p className="App-text">Upcoming sessions</p>
+                    <p className="App-text-dark">Upcoming sessions</p>
                     {sessionItems && sessionItems.upcoming.length > 0 &&
                         <DetailsList items={sessionItems.upcoming}></DetailsList>
                     }
                     {sessionItems && sessionItems.upcoming.length === 0 &&
-                        <p className="App-text">There are no upcoming sessions.</p>
+                        <p className="App-text-dark">There are no upcoming sessions.</p>
                     }
                 </Stack>
                 <Separator vertical alignContent="center">
                     {/* <Icon iconName="Clock" styles={ViewProfileStyles.iconStyles} /> */}
                 </Separator>
                 <Stack>
-                    <p className="App-text">Past sessions</p>
+                    <p className="App-text-dark">Past sessions</p>
                     {sessionItems && sessionItems.past.length > 0 &&
                         <DetailsList items={sessionItems.past}></DetailsList>
                     }
@@ -94,7 +94,7 @@ export const MentorViewProfile = () => {
                 </Stack>
             </Stack>
             <Stack>
-                <p className="App-text">2 Credits</p><br/>
+                <p className="App-text-dark">2 Credits</p><br/>
                 <Stack horizontal horizontalAlign="start">
                     {mentoringProgressItems && mentoringProgressItems.length > 0 &&
                         mentoringProgressItems.sort((a, b) => a.itemM > b.itemM ? 1 : -1).map((c, index) => {
