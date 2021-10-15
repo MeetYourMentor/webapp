@@ -5,40 +5,104 @@ body {
 
 .App {
   text-align: left;
-  vertical-align: top;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-
-.App-header {
-  background-color: #042383;
-  width: 100%;
-  height: 60px;
   display: flex;
   flex-direction: column;
-  align-items: left;
-  font-size: calc(25px);
-  color: rgb(255, 255, 255);
-  position: fixed;
-  z-index: 500;
-  top: 0;
+}
+
+.App-header {
+  background: linear-gradient(90deg, rgba(0,120,212,1) 0%, rgba(0,155,255,1) 94%);
+  width: 100%;
+  height: 4.2vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .App-text {
   margin-left: 10px;
-  margin: 10px 10px 10px 10px;
+  font-size: 16px;
+  color: white;
+  flex-grow: 1
 }
 
-.App-link {
-  color: #61dafb;
+.App-persona {
+  margin-right: 10px;
+  flex-grow: auto;
+}
+
+.Home {
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  background-color:#F2F2F2;
+  height: 95.8vh;
+}
+
+.Home-header {
+  background: linear-gradient(268.37deg, #2C6CB8 0%, #27446E 99.05%);
+  height: 28.3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  justify-content: center;
+}
+
+.Home-text {
+  margin: 0.5vh;
+  text-align: center;
+  font-size: calc(30px);
+}
+
+.Home-text-2 {
+  margin: 0.5vh;
+  text-align: center;
+}
+
+.Home-cards {
+  display: flex;
+  flex-direction: row;
+  height: 28.3vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  margin: 3vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: 'Segoe UI';
+  font-size: 13px;
+  line-height: 28px;
+  font-weight: bold;
+  margin-bottom: 1VH;
+}
+
+.titleFirstText{
+  font-size: 1.06vh !important;
+  font-family: 'Segoe UI' !important;
+  line-height: 16px !important;
+  margin: 0 !important;
+  color: #333333 !important;
+}
+
+.titleSecondText{
+  font-size: 1.24vh !important;
+  font-family: 'Segoe UI' !important;
+  line-height: 20px !important;
+  height: 8.85vh;
+  margin: 0 !important;
+  color: #323130 !important;
+}
+
+.titleThirdText{
+  font-size: 1.06vh !important;
+  font-family: 'Segoe UI' !important;
+  line-height: 16px !important;
+  margin: 0 !important;
+  color: #2F80ED !important;
 }
