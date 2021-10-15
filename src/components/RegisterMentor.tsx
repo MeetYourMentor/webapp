@@ -237,6 +237,7 @@ export class RegisterMentor extends React.Component<any, State> {
         }
     }
 
+    
     onChangeDescription = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
         this.setState({ description: newValue });
     };
@@ -325,9 +326,9 @@ export class RegisterMentor extends React.Component<any, State> {
                     <h4>Skills</h4>
                     <div className="information-section">
                         <Dropdown
-                            placeholder="Select upto 3 SUPER skills"
+                            placeholder="Select upto 3 SUPERPOWERs"
                             defaultSelectedKeys={this.state.topSkills}
-                            label="What are your SUPER skills?"
+                            label="What are your SUPERPOWERs?"
                             multiSelect
                             required
                             options={this._getTopSkillsDropdownOptions()}
@@ -368,6 +369,7 @@ export class RegisterMentor extends React.Component<any, State> {
                         <Dropdown className="thirdBox"
                             placeholder="Select Employee Resource Groups"
                             label="Select Employee Resource Groups"
+                            required
                             options={this._getGroupDropdownOptions()}
                             onChange={this.onDropdownChangeGroup}
                         />
