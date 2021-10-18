@@ -13,10 +13,11 @@ import {
   } from '@fluentui/react/lib/DocumentCard';
 
   import { getTheme } from '@fluentui/react/lib/Styling';
+import { Image, ImageFit } from '@fluentui/react';
 
 const text1 = "Meet Your Mentor is a great way to find the right Mentor based on the superpower  you are looking for."
 const text2 = "We have a curated set of mentors with unique “superpowers”."
-const text3 = "Mentees can choose the right mentor based on the superpower they want to acquire"
+const text3 = "Mentees can choose the right mentor based on the superpower they want to acquire."
 const text4 = "Click below to register either as a mentor or mentee or both!"
 const theme = getTheme();
 
@@ -38,10 +39,18 @@ const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
 };
 
 export const Home = () => {
+    // This just hides the header
+    document.addEventListener('readystatechange', () => {
+        if (document.readyState === 'complete') {
+            const header = document.getElementById('App-Header');
+            header!.style.display = 'none';
+        }
+    })
+
     return (
         <div className="Home">
+            <Image src="images/MentXBanner.png" imageFit={ImageFit.cover}/>  
             <div className="Home-header">
-                <p className="Home-text">Meet your mentor</p>
                 <div className="Home-text-2">
                     <div>{text1}</div>
                     <div>{text2}</div>

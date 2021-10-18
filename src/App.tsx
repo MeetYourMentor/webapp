@@ -63,7 +63,7 @@ const App = (): React.FunctionComponentElement<any> => {
     // <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
       <Router>
         <div className="App">
-          <nav className="App-header">
+          <nav id="App-Header" className="App-header">
             <p className="App-text">Meet your mentor</p>
             <div className="App-persona">
               <Person personDetails={personDetails} />
